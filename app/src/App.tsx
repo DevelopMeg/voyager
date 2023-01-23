@@ -1,7 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
+import { RootRoutes } from "./pages/RootRoutes";
 
 const App = () => {
-  return <div>voyager</div>;
+  return (
+    <Suspense>
+      <RootRoutes />
+    </Suspense>
+  );
 };
 
 export default App;
