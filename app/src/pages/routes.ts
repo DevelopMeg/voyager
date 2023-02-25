@@ -1,6 +1,6 @@
 import flightIcon from "../assets/icons/flight-nav.png";
-import hotelsIcon from "../assets/icons/hotels-nav.png";
-import carsIcon from "../assets/icons/cars-nav.png";
+import hotelsIcon from "../assets/icons/hotels-nav.svg";
+import carsIcon from "../assets/icons/cars-nav.svg";
 import popularTripsIcon from "../assets/icons/popular-trips-nav.png";
 import tripCreatorIcon from "../assets/icons/trip-creator-nav.png";
 import myAccountIcon from "../assets/icons/user-nav.png";
@@ -11,81 +11,152 @@ import reservationsIcon from "../assets/icons/reservations-nav.png";
 import completedTripsIcon from "../assets/icons/completed-trips-nav.png";
 import cartIcon from "../assets/icons/cart-nav.png";
 
-type LoginStatus = "logged" | "noLogged" | "both";
+export type HideRoute = "mobile" | "desktop" | "logged" | "noLogged" | "";
 
 interface IBasicRoute {
   path: string;
   title: string;
   icon: string;
-  loginStatus: LoginStatus;
 }
 
 export interface IRoute extends IBasicRoute {
-  subLinks?: IBasicRoute[];
+  subLinks: IBasicRoute[];
+  hide: HideRoute;
 }
 
-export const searchRoutes: IRoute[] = [
-  { path: "/flights", title: "Flights", icon: flightIcon, loginStatus: "both" },
-  { path: "/hotels", title: "Hotels", icon: hotelsIcon, loginStatus: "both" },
-  { path: "/cars", title: "Cars", icon: carsIcon, loginStatus: "both" },
+const myAccountSublinks: IBasicRoute[] = [
   {
-    path: "/popular-trips",
-    title: "Popular Trips",
-    icon: popularTripsIcon,
-    loginStatus: "both",
+    path: "/my-account",
+    title: "Account info",
+    icon: accountInfoIcon,
+  },
+  {
+    path: "/my-account/settings",
+    title: "Account settings",
+    icon: accountSettingsIcon,
+  },
+  {
+    path: "/my-account/travelers",
+    title: "Travelers",
+    icon: travelersIcon,
+  },
+  {
+    path: "/my-account/reservations",
+    title: "Reservations",
+    icon: reservationsIcon,
+  },
+  {
+    path: "/my-account/completed-trips",
+    title: "Completed trips",
+    icon: completedTripsIcon,
   },
 ];
 
-export const actionRoutes: IRoute[] = [
+export const searchRoutes: IRoute[] = [
+  {
+    path: "/flights",
+    title: "Flights",
+    icon: flightIcon,
+    subLinks: [],
+    hide: "",
+  },
+  {
+    path: "/hotels",
+    title: "Hotels",
+    icon: hotelsIcon,
+    subLinks: [],
+    hide: "",
+  },
+  {
+    path: "/cars",
+    title: "Cars",
+    icon: carsIcon,
+    subLinks: [],
+    hide: "",
+  },
+  {
+    path: "/popular-trips",
+    title: "Top Trips",
+    icon: popularTripsIcon,
+    subLinks: [],
+    hide: "",
+  },
   {
     path: "/trip-creator",
     title: "Trip Creator",
     icon: tripCreatorIcon,
-    loginStatus: "both",
+    subLinks: [],
+    hide: "desktop",
+  },
+];
+
+const actionRoutes: IRoute[] = [
+  {
+    path: "/trip-creator",
+    title: "Trip Creator",
+    icon: tripCreatorIcon,
+    subLinks: [],
+    hide: "mobile",
   },
   {
     path: "/login",
-    title: "Sign in",
+    title: "",
     icon: myAccountIcon,
-    loginStatus: "noLogged",
+    subLinks: [],
+    hide: "noLogged",
   },
   {
-    path: "",
-    title: "My account",
+    path: "/my-account",
+    title: "",
     icon: myAccountIcon,
-    loginStatus: "logged",
-    subLinks: [
-      {
-        path: "/my-account",
-        title: "Account info",
-        icon: accountInfoIcon,
-        loginStatus: "logged",
-      },
-      {
-        path: "/my-account/settings",
-        title: "Account settings",
-        icon: accountSettingsIcon,
-        loginStatus: "logged",
-      },
-      {
-        path: "/my-account/travelers",
-        title: "Travelers",
-        icon: travelersIcon,
-        loginStatus: "logged",
-      },
-      {
-        path: "/my-account/reservations",
-        title: "Reservations",
-        icon: reservationsIcon,
-        loginStatus: "logged",
-      },
-      {
-        path: "/my-account/completed-trips",
-        title: "Completed trips",
-        icon: completedTripsIcon,
-        loginStatus: "logged",
-      },
-    ],
+    subLinks: myAccountSublinks,
+    hide: "logged",
   },
-  { path: "/cart", title: "Cart", icon: cartIcon, loginStatus: "both" },
+  {
+    path: "/cart",
+    title: "",
+    icon: cartIcon,
+    subLinks: [],
+    hide: "",
+  },
 ];
+
+export const actionRoutesForNoLogged: IRoute[] = actionRoutes.filter(
+  (route) => route.hide !== "logged"
+);
+
+export const actionRoutesForLogged: IRoute[] = actionRoutes.filter(
+  (route) => route.hide !== "noLogged"
+);
+
+export const footerRoutes = [
+  {
+    path: "/flights",
+    title: "Flights"
+  },
+  {
+    path: "/hotels",
+    title: "Hotels"
+  },
+  {
+    path: "/cars",
+    title: "Cars"
+  },
+  {
+    path: "/popular-trips",
+    title: "Top Trips"
+  },
+  {
+    path: "/trip-creator",
+    title: "Trip Creator"
+  },
+  {
+    path: "/my-account",
+    title: "My account"
+  },
+  {
+    path: "/cart",
+    title: "Cart"
+  },
+];
+
