@@ -1,5 +1,5 @@
 import * as React from "react";
-import SearchBox from "./SearchBox";
+import SearchOffer from "./SearchOffer";
 import SliderOffers from "./SliderOffers";
 import PopularTrips from "./PopularTrips";
 import ContactForm from "./ContactForm";
@@ -12,7 +12,7 @@ const HomePage = (): JSX.Element => {
     <>
       <S.BoxImage image={homePageImage} />
 
-      <SearchBox />
+      <SearchOffer />
 
       <S.TitleOffer>
         <S.TitleOfferPageName>
