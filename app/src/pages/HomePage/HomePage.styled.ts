@@ -2,20 +2,12 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { SlideArrowType } from "./SliderOffers";
 
-interface IBoxImage {
+interface ISrcImage {
   image: string;
 }
 
 interface ISearchButton {
   isActive: boolean;
-}
-
-interface IOfferTripCreator {
-  image: string;
-}
-
-interface ISlideImage {
-  image: string;
 }
 
 interface ISliderDot {
@@ -37,7 +29,7 @@ interface ISlideArrowBtn {
 
 // image
 
-export const BoxImage = styled.div<IBoxImage>`
+export const BoxImage = styled.div<ISrcImage>`
   width: 100%;
   height: 350px;
   background-image: url(${(p) => p.image});
@@ -54,11 +46,11 @@ export const BoxImage = styled.div<IBoxImage>`
 
 export const SearchBox = styled.div`
   margin: -125px auto 0;
-  border: 1px solid ${p => p.theme.colors.gray.medium};
+  border: 1px solid ${p => p.theme.colors.gray.bright};
   display: flex;
   flex-direction: column;
   width: 85%;
-  background-color: ${p => p.theme.colors.gray.light};
+  background-color: ${p => p.theme.colors.gray.basic};
   border-radius: 4px;
 
   @media(min-width: 1000px) {
@@ -85,7 +77,7 @@ export const SearchButtons = styled.div`
 export const SearchButton = styled.button<ISearchButton>`
   padding: 10px 15px;
   border: none;
-  background-color: ${(p) => (p.isActive ? p.theme.colors.gray.light : p.theme.colors.basicBlue)};
+  background-color: ${(p) => (p.isActive ? p.theme.colors.gray.basic : p.theme.colors.basicBlue)};
   font-size: 2rem;
   display: flex;
   align-items: center;
@@ -98,8 +90,8 @@ export const SearchButton = styled.button<ISearchButton>`
   }
 
   &:nth-of-type(2) {
-    border-left: 1px solid ${p => p.theme.colors.gray.light};
-    border-right: 1px solid ${p => p.theme.colors.gray.light};
+    border-left: 1px solid ${p => p.theme.colors.gray.basic};
+    border-right: 1px solid ${p => p.theme.colors.gray.basic};
   }
 
   &:nth-of-type(3) {
@@ -110,8 +102,8 @@ export const SearchButton = styled.button<ISearchButton>`
     &:nth-of-type(2) {
       border-left: none;
       border-right: none;
-      border-top: 1px solid ${p => p.theme.colors.gray.light};
-      border-bottom: 1px solid ${p => p.theme.colors.gray.light};
+      border-top: 1px solid ${p => p.theme.colors.gray.basic};
+      border-bottom: 1px solid ${p => p.theme.colors.gray.basic};
     }
 
     &:nth-of-type(3) {
@@ -135,7 +127,7 @@ export const SectionSearchTitle = styled.h3`
   font-weight: 400;
   text-transform: uppercase;
   font-size: 1.6rem;
-  color: ${p => p.theme.colorsTxt.basicBlue};
+  color: ${p => p.theme.colorsTxt.mediumBlue};
 
   @media(min-width: 1000px) {
     font-size: 1.7rem;
@@ -255,7 +247,7 @@ export const Slide = styled.div<ISlideWidth>`
   }
 `
 
-export const SlideImage = styled.div<ISlideImage>`
+export const SlideImage = styled.div<ISrcImage>`
   width: 230px;
   height: 300px;
   background-image: url(${(p) => p.image});
@@ -330,7 +322,7 @@ export const SliderDot = styled.div<ISliderDot>`
 
 // offer trip creator 
 
-export const OfferTripCreator = styled.div<IOfferTripCreator>`
+export const OfferTripCreator = styled.div<ISrcImage>`
   padding: 45px 0;
   background-image: url(${(p) => p.image});
   background-position: 0% 22%;
@@ -343,7 +335,11 @@ export const OfferTripCreator = styled.div<IOfferTripCreator>`
 export const OfferTripCreatorTitle = styled.h3`
   margin: 0; 
   font-weight: 400;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
+
+  @media(min-width: 1100px) {
+    font-size: 2.8rem;
+  }
 `
 
 export const OfferTripCreatorSubtitle = styled.p`
@@ -361,4 +357,103 @@ export const OfferTripCreatorLink = styled(NavLink)`
   color: ${p => p.theme.colorsTxt.darkBlue};
   border-radius: 25px;
   font-size: 1.4rem;
+`
+
+// contact form
+
+export const ContactForm = styled.form<ISrcImage>`
+  padding: 50px 0;
+  background-image: url(${(p) => p.image});
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const ContactFormBox = styled.div`
+  padding: 20px 35px;
+  width: 80%;
+  background-color: rgba(224, 229, 232, 0.85);
+  border-radius: 10px;
+
+  @media(min-width: 800px) {
+    padding: 30px 50px;
+  }
+
+  @media(min-width: 900px) {
+    width: 60%;
+  }
+
+  @media(min-width: 1100px) {
+    width: 50%;
+  }
+`
+
+export const ContactFormTitle = styled.h3`
+  margin: 0;
+  text-transform: uppercase;
+  text-align: center;
+`
+
+export const FormNameEmailBox = styled.div`
+  margin: 30px 0 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+
+  @media(min-width: 800px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`
+
+export const FormInputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+`
+
+export const FormLabel = styled.label`
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 500;
+`
+
+export const FormInput = styled.input`
+  border: none;
+  padding: 8px 12px;
+  border-radius: 2px;
+`
+
+export const FormTextarea = styled.textarea`
+  padding: 8px 12px;
+  border: none;
+  resize: none;
+  border-radius: 2px;
+  font-size: 1.5rem;
+`
+
+export const FormConfirmButton = styled.button`
+  margin: 20px auto 0;
+  padding: 8px 0;
+  border: none;
+  display: block;
+  width: 100%;
+  text-transform: uppercase;
+  border-radius: 4px;
+  text-align: center;
+  background-color: ${p => p.theme.colors.gray.dark};
+  color: ${p => p.theme.colors.brightBasicBlue};
+  cursor: pointer;
+
+  @media(min-width: 600px) {
+    width: 45%;
+  }
+
+  @media(min-width: 800px) {
+    width: 35%;
+  }
 `

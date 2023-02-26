@@ -54,20 +54,15 @@ export const FormLabel = styled.label`
   }
 `
 export const FormInput = styled.input`
-  border: 1px solid ${p => p.theme.colors.gray.dark};
-  padding: 8px 12px;
-  border-radius: 4px;
+  border: 1px solid ${p => p.theme.colors.gray.medium};
+  padding: 10px 12px;
+  border-radius: 2px;
   background-color: ${p => p.theme.colors.white};
   font-size: 1.4rem;
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 1px ${p => p.theme.colors.gray.dark};
-  }
 `
 
 export const ConfirmButton = styled.button`
-  padding: 8px 0;
+  padding: 10px 0;
   border: 1px solid ${p => p.theme.colors.basicBlue};
   align-self: center;
   width: 60%;

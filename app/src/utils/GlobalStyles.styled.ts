@@ -16,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
     background-color: #fff;
+    color: #171717;
   }
 
   h2, h3, h4, h5, p {
@@ -34,5 +35,12 @@ export const GlobalStyles = createGlobalStyle`
   #root {
     margin: 0 auto;
     max-width: 1300px;
+  }
+
+  input, textarea {
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 1px #d7d7d7;
+    }
   }
 `;
