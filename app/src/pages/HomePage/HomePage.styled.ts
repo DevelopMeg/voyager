@@ -27,6 +27,11 @@ interface ISlideArrowBtn {
   typeArrow: SlideArrowType;
 }
 
+interface IPopularTrip extends ISrcImage {
+  name: string;
+  position: string;
+}
+
 // image
 
 export const BoxImage = styled.div<ISrcImage>`
@@ -357,6 +362,118 @@ export const OfferTripCreatorLink = styled(NavLink)`
   color: ${p => p.theme.colorsTxt.darkBlue};
   border-radius: 25px;
   font-size: 1.4rem;
+`
+
+// popular trips 
+
+export const PopularTripsSection = styled.section`
+  margin: 0 auto;
+  padding: 50px 0;
+  text-align: center;
+
+  @media(min-width: 1100px) {
+    width: 100rem;
+  }
+`
+
+export const PopularTripsTitle = styled.h3`
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  font-weight: 500;
+`
+
+export const PopularTrips = styled.div`
+  margin: 0 auto;
+  display: flex; 
+  flex-direction: column;
+  gap: 20px;
+  width: 30rem;
+
+  @media(min-width: 700px) {
+    width: 80%;
+    flex-direction: row;
+  }
+
+  @media(min-width: 1100px) {
+    display: grid;
+    grid-template-rows: 100%;
+    gap: 40px;
+    height: 300px;
+    justify-content: space-between;
+    width: 100%;
+  }
+`
+
+export const PopularTripsTop = styled(PopularTrips)`
+  @media(min-width: 1100px) {
+    grid-template-columns: 1fr 230px 230px;
+  }
+`
+
+export const PopularTripsBottom = styled(PopularTrips)`
+  margin-top: 20px;
+
+  @media(min-width: 1100px) {
+    grid-template-columns: 230px 230px 1fr;
+  }
+`
+
+export const PopularTrip = styled(NavLink)<IPopularTrip>`
+  background-image: url(${p => p.image});
+  background-size: cover;
+  background-position: ${p => p.position};
+  position: relative;
+  height: 300px;
+  width: 100%;
+
+  &::after {
+    content: '${p => p.name}';
+    padding: 10px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(244, 249, 251, 0.8);
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0.3rem;
+  }
+
+  @media(min-width: 1100px) {
+    background-position: center;
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &::after {
+      padding: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+  }
+`
+
+export const PopularTripBtn = styled(NavLink)`
+  padding: 18px 20px;
+  margin: 40px auto 0;
+  display: block;
+  width: max-content;
+  background-color: ${p => p.theme.colors.basicBlue};
+  color: ${p => p.theme.colorsTxt.darkBlue};
+  text-transform: uppercase;
+  border-radius: 25px;
+  opacity: 1;
+  transition: opacity 0.5s;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `
 
 // contact form

@@ -34,7 +34,7 @@ export const GlobalStyles = createGlobalStyle`
 
   #root {
     margin: 0 auto;
-    max-width: 1300px;
+    max-width: 1920px;
   }
 
   input, textarea {
