@@ -1,1 +1,1 @@
-This is a project based on own design - https://www.figma.com/file/5FmBEpiV0at8C5nnbrNqU4/My-travel?type=design&node-id=0%3A1&mode=design&t=WZFUM20WP5XL2lMn-1
+This is a project based on own design - https://www.figma.com/file/qR7wDR0JOl90yzsvxIR3TP/Voyager?type=design&node-id=0-1&mode=design&t=YLaV5dTuQKmzYs7Q-0
